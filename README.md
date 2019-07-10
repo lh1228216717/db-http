@@ -714,3 +714,32 @@ select trunc(to_date('2019-05-05','yyyy-mm-dd'),'mm') from dual;--所选日期�
 --trunc()可以用来将日期截取到任意精度 因此使用trunc()函数截取到月就可以获得当月的第一天 
 select last_day(to_date('2019-05-05','yyyy-mm-dd')) from dual;--所选日期当月最后一天
 ```
+```sql
+update s_Ws_Storagedetail sd set sd.sd_isbargains=2 where sd.sd_barcode = trim(replace('条码', chr(9), '')); --去空白符
+chr()函数将ASCII码转换为字符：字符 –》 ASCII码；
+ascii()函数将字符转换为ASCII码：ASCII码 –》 字符；
+
+在oracle中chr()函数和ascii()是一对反函数。
+chr()函数示例：
+SQL> select chr(65) from dual;
+ 
+CHR(65)
+-------
+A
+
+accii()函数示例：
+
+SQL> select ascii('A') from dual;
+ 
+ASCII('A')
+----------
+        65
+ 
+回车： chr(13)
+换行： chr(10)
+```
+```sql
+--通过约束名称查看表
+SELECT A.CONSTRAINT_NAME,A.TABLE_NAME,A.COLUMN_NAME,B.CONSTRAINT_TYPE FROM USER_CONS_COLUMNS A, USER_CONSTRAINTS B WHERE A.CONSTRAINT_NAME =B.CONSTRAINT_NAME AND A.OWNER='ZGQ_CMS6' and a.constraint_name LIKE '%SYS_C00104226%'
+
+```
